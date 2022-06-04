@@ -18,4 +18,7 @@ __exportStar(require("./mediator.module"), exports);
 __exportStar(require("./query.bus"), exports);
 __exportStar(require("./command.bus"), exports);
 __exportStar(require("./event.bus"), exports);
+__exportStar(require("./decorators/command.handler"), exports);
+__exportStar(require("./decorators/event.handler"), exports);
+__exportStar(require("./decorators/query.handler"), exports);
 //# sourceMappingURL=index.js.map
