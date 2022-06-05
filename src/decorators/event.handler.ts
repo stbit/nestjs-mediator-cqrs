@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common"
 import { HandlerType } from "../constants/handler-type"
-import { BaseHandler, BaseEventHandler, EventHandlerOptions, IMetaDataHandler } from "../typings"
+import { BaseHandler, BaseEventHandler, EventHandlerOptions, IMetaDataHandler, BaseConstructor } from "../typings"
 
-export function EventHandler<C extends BaseHandler>(ctr: C, options: EventHandlerOptions = { sync: true }) {
+export function EventHandler<C extends BaseConstructor>(ctr: C, options: EventHandlerOptions = { sync: true }) {
   const inject = Injectable()
 
   return <T extends BaseEventHandler<C>>(target: T) => {
