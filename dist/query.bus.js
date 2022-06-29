@@ -15,6 +15,8 @@ let QueryBus = class QueryBus {
         const metadata = ctr.__IS_CQRS_METADATA__;
         if ((metadata === null || metadata === void 0 ? void 0 : metadata.type) !== handler_type_1.HandlerType.Query)
             throw new Error(`QueryBus: ${ctrlClass.name} not defined decorator QueryHandler`);
+        if (!ctr.__COMMAND_EXECUTE__)
+            throw new Error(`__COMMAND_EXECUTE__ is not define class: ${ctr.name}. Add ${ctr.name} to module providers`);
         return ctr.__COMMAND_EXECUTE__(options);
     }
 };

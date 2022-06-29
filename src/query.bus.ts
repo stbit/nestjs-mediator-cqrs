@@ -10,6 +10,7 @@ export class QueryBus {
     const metadata: IMetaDataHandler | undefined = ctr.__IS_CQRS_METADATA__
 
     if (metadata?.type !== HandlerType.Query) throw new Error(`QueryBus: ${ctrlClass.name} not defined decorator QueryHandler`)
+    if (!ctr.__COMMAND_EXECUTE__) throw new Error(`__COMMAND_EXECUTE__ is not define class: ${ctr.name}. Add ${ctr.name} to module providers`)
 
     return ctr.__COMMAND_EXECUTE__(options) as R
   }
