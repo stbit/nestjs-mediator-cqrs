@@ -1,4 +1,4 @@
-import { managerService } from "src/services/manager.service"
+import { managerService } from "../services/manager.service"
 import { HandlerType } from "../constants/handler-type"
 import { BaseHandler, IMetaDataHandler } from "../typings"
 

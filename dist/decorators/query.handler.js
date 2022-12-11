@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.QueryHandler = void 0;
-const manager_service_1 = require("src/services/manager.service");
+const manager_service_1 = require("../services/manager.service");
 const handler_type_1 = require("../constants/handler-type");
 function QueryHandler() {
     return (target) => {
