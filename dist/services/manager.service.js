@@ -28,10 +28,25 @@ class ManagerService {
             this.providerEventHandler(handler);
         }
     }
+    getTypeName(type) {
+        if (typeof type === 'string' || typeof type === 'symbol' || typeof type === 'function')
+            return type;
+        else
+            return type.name;
+    }
     getInjectedProviders(Provider) {
         // check corrert injected
-        this.moduleRef.get(Provider, { strict: false });
+        // this.moduleRef!.get(Provider, { strict: false })
         const types = Reflect.getMetadata('design:paramtypes', Provider) || [];
+        // check correct injected
+        types.forEach((type) => {
+            try {
+                this.moduleRef.get(type, { strict: false });
+            }
+            catch (_a) {
+                throw new Error(`Can't resolve ${this.getTypeName(type)} for ${Provider.name}`);
+            }
+        });
         return types.map((type) => this.moduleRef.get(type, { strict: false }));
     }
     providerExecute(Provider) {

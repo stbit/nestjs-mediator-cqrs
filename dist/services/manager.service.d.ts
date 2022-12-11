@@ -6,6 +6,7 @@ declare class ManagerService {
     initializeModule(moduleRef: ModuleRef): void;
     addHandler(handler: ICommandHandler): void;
     private initializeHandler;
+    private getTypeName;
     private getInjectedProviders;
     private providerExecute;
     private providerEventHandler;
