@@ -1,18 +1,18 @@
 import { Injectable } from "@nestjs/common"
+import { managerService } from "src/services/manager.service"
 import { HandlerType } from "../constants/handler-type"
 import { BaseHandler, IMetaDataHandler } from "../typings"
 
 export function CommandHandler() {
-  const inject = Injectable()
-
   return (target: BaseHandler) => {
+    const ctrl = target as any
     const metadata: IMetaDataHandler = {
       type: HandlerType.Command,
       sync: true
     }
 
-    inject(target);
+    ctrl.__IS_CQRS_METADATA__ = metadata
 
-    (target as any).__IS_CQRS_METADATA__ = metadata
+    managerService.addHandler(ctrl)
   }
 }

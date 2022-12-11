@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommandHandler = void 0;
-const common_1 = require("@nestjs/common");
+const manager_service_1 = require("src/services/manager.service");
 const handler_type_1 = require("../constants/handler-type");
 function CommandHandler() {
-    const inject = (0, common_1.Injectable)();
     return (target) => {
+        const ctrl = target;
         const metadata = {
             type: handler_type_1.HandlerType.Command,
             sync: true
         };
-        inject(target);
-        target.__IS_CQRS_METADATA__ = metadata;
+        ctrl.__IS_CQRS_METADATA__ = metadata;
+        manager_service_1.managerService.addHandler(ctrl);
     };
 }
 exports.CommandHandler = CommandHandler;
