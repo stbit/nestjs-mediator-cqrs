@@ -1,6 +1,4 @@
-import { EventsService } from "./services/events.service";
 export declare class EventBus {
-    private readonly eventsService;
-    constructor(eventsService: EventsService);
+    constructor();
     publish<T extends Object>(event: T): Promise<void>;
 }

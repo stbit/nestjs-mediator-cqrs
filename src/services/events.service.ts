@@ -1,7 +1,4 @@
-import { Injectable } from "@nestjs/common";
-
-@Injectable()
-export class EventsService {
+class EventsService {
   private readonly handlersSync: WeakMap<any, ((data: any) => any)[]> = new WeakMap()
   private readonly handlersAsync: WeakMap<any, ((data: any) => any)[]> = new WeakMap()
 
@@ -20,3 +17,5 @@ export class EventsService {
     return this.handlersAsync.get(ctr)
   }
 }
+
+export const eventsService = new EventsService

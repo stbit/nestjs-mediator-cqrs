@@ -13,12 +13,10 @@ exports.EventBus = void 0;
 const common_1 = require("@nestjs/common");
 const events_service_1 = require("./services/events.service");
 let EventBus = class EventBus {
-    constructor(eventsService) {
-        this.eventsService = eventsService;
-    }
+    constructor() { }
     async publish(event) {
-        const handlersSync = this.eventsService.getSyncHandlers(event.constructor);
-        const handlersAsync = this.eventsService.getAsyncHandlers(event.constructor);
+        const handlersSync = events_service_1.eventsService.getSyncHandlers(event.constructor);
+        const handlersAsync = events_service_1.eventsService.getAsyncHandlers(event.constructor);
         if (handlersSync) {
             for (const handler of handlersSync) {
                 await handler(event);
@@ -33,7 +31,7 @@ let EventBus = class EventBus {
 };
 EventBus = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [events_service_1.EventsService])
+    __metadata("design:paramtypes", [])
 ], EventBus);
 exports.EventBus = EventBus;
 //# sourceMappingURL=event.bus.js.map

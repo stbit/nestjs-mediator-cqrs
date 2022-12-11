@@ -1,7 +1,7 @@
 import { OnApplicationBootstrap } from "@nestjs/common";
-import { BootstrapService } from "./services/bootstrap.sevice";
+import { ModuleRef } from "@nestjs/core";
 export declare class MediatorModule implements OnApplicationBootstrap {
-    private readonly bootstrapService;
-    constructor(bootstrapService: BootstrapService);
+    private readonly moduleRef;
+    constructor(moduleRef: ModuleRef);
     onApplicationBootstrap(): void;
 }

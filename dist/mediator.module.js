@@ -11,25 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MediatorModule = void 0;
 const common_1 = require("@nestjs/common");
+const core_1 = require("@nestjs/core");
 const command_bus_1 = require("./command.bus");
 const event_bus_1 = require("./event.bus");
 const query_bus_1 = require("./query.bus");
-const bootstrap_sevice_1 = require("./services/bootstrap.sevice");
-const events_service_1 = require("./services/events.service");
+const manager_service_1 = require("./services/manager.service");
 let MediatorModule = class MediatorModule {
-    constructor(bootstrapService) {
-        this.bootstrapService = bootstrapService;
+    constructor(moduleRef) {
+        this.moduleRef = moduleRef;
     }
     onApplicationBootstrap() {
-        this.bootstrapService.explore();
+        manager_service_1.managerService.initializeModule(this.moduleRef);
     }
 };
 MediatorModule = __decorate([
     (0, common_1.Module)({
-        providers: [command_bus_1.CommandBus, query_bus_1.QueryBus, event_bus_1.EventBus, bootstrap_sevice_1.BootstrapService, events_service_1.EventsService],
+        providers: [command_bus_1.CommandBus, query_bus_1.QueryBus, event_bus_1.EventBus],
         exports: [command_bus_1.CommandBus, query_bus_1.QueryBus, event_bus_1.EventBus]
     }),
-    __metadata("design:paramtypes", [bootstrap_sevice_1.BootstrapService])
+    __metadata("design:paramtypes", [core_1.ModuleRef])
 ], MediatorModule);
 exports.MediatorModule = MediatorModule;
 //# sourceMappingURL=mediator.module.js.map

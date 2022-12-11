@@ -1,16 +1,14 @@
 
 import { Injectable } from "@nestjs/common";
-import { EventsService } from "./services/events.service";
+import { eventsService } from "./services/events.service";
 
 @Injectable()
 export class EventBus {
-  constructor(
-    private readonly eventsService: EventsService
-  ) {}
+  constructor() {}
 
   async publish<T extends Object>(event: T) {
-    const handlersSync = this.eventsService.getSyncHandlers(event.constructor)
-    const handlersAsync = this.eventsService.getAsyncHandlers(event.constructor)
+    const handlersSync = eventsService.getSyncHandlers(event.constructor)
+    const handlersAsync = eventsService.getAsyncHandlers(event.constructor)
 
     if (handlersSync) {
       for (const handler of handlersSync) {

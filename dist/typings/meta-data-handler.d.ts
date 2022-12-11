@@ -5,3 +5,6 @@ export interface IMetaDataHandler {
     sync: boolean;
     eventClass?: BaseConstructor;
 }
+export interface ICommandHandler {
+    __IS_CQRS_METADATA__: IMetaDataHandler;
+}
