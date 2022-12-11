@@ -1,5 +1,5 @@
 import { ModuleRef } from "@nestjs/core";
-import { ICommandHandler } from "src/typings";
+import { ICommandHandler } from "../typings";
 declare class ManagerService {
     private moduleRef?;
     private handlers;

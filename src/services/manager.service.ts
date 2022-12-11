@@ -1,7 +1,7 @@
 import { Type } from "@nestjs/common"
 import { ModuleRef } from "@nestjs/core"
-import { HandlerType } from "src/constants"
-import { ICommandHandler, IMetaDataHandler } from "src/typings"
+import { HandlerType } from "../constants"
+import { ICommandHandler, IMetaDataHandler } from "../typings"
 import { eventsService } from "./events.service"
 
 class ManagerService {

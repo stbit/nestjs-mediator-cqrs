@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.managerService = void 0;
-const constants_1 = require("src/constants");
+const constants_1 = require("../constants");
 const events_service_1 = require("./events.service");
 class ManagerService {
     constructor() {
