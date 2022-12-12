@@ -69,7 +69,8 @@ class ManagerService {
   }
 
   private providerEventHandler(Provider: any) {
-    const eventHandler = this.moduleRef!.get(Provider, { strict: false })
+    const injectedProviders = this.getInjectedProviders(Provider)
+    const eventHandler = new Provider(...injectedProviders)
     const metadata = Provider.__IS_CQRS_METADATA__ as IMetaDataHandler
 
     eventsService.addHandler(metadata.eventClass, async (event: any) => {

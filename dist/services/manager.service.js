@@ -58,7 +58,8 @@ class ManagerService {
         };
     }
     providerEventHandler(Provider) {
-        const eventHandler = this.moduleRef.get(Provider, { strict: false });
+        const injectedProviders = this.getInjectedProviders(Provider);
+        const eventHandler = new Provider(...injectedProviders);
         const metadata = Provider.__IS_CQRS_METADATA__;
         events_service_1.eventsService.addHandler(metadata.eventClass, async (event) => {
             return await eventHandler.handle(event);
