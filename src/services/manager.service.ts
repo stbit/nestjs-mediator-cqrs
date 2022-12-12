@@ -48,8 +48,8 @@ class ManagerService {
     types.forEach((type: string | symbol | Function | Type<any>) => {
       try {
         this.moduleRef!.get(type, { strict: false })
-      } catch {
-        throw new Error(`Can't resolve ${this.getTypeName(type)} for ${Provider.name}`)
+      } catch(error: any) {
+        throw new Error(`Can't resolve ${this.getTypeName(type)} for ${Provider.name}: ` + error.message)
       }
     })
 

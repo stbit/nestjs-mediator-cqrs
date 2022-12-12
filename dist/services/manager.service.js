@@ -43,8 +43,8 @@ class ManagerService {
             try {
                 this.moduleRef.get(type, { strict: false });
             }
-            catch (_a) {
-                throw new Error(`Can't resolve ${this.getTypeName(type)} for ${Provider.name}`);
+            catch (error) {
+                throw new Error(`Can't resolve ${this.getTypeName(type)} for ${Provider.name}: ` + error.message);
             }
         });
         return types.map((type) => this.moduleRef.get(type, { strict: false }));
