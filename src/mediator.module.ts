@@ -1,10 +1,11 @@
-import { Module, OnApplicationBootstrap } from "@nestjs/common";
+import { Module, Global, OnApplicationBootstrap } from "@nestjs/common";
 import { ModuleRef } from "@nestjs/core";
 import { CommandBus } from "./command.bus";
 import { EventBus } from "./event.bus";
 import { QueryBus } from "./query.bus";
 import { managerService } from "./services/manager.service";
 
+@Global()
 @Module({
   providers: [CommandBus, QueryBus, EventBus],
   exports: [CommandBus, QueryBus, EventBus]

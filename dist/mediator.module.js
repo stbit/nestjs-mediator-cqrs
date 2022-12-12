@@ -25,6 +25,7 @@ let MediatorModule = class MediatorModule {
     }
 };
 MediatorModule = __decorate([
+    (0, common_1.Global)(),
     (0, common_1.Module)({
         providers: [command_bus_1.CommandBus, query_bus_1.QueryBus, event_bus_1.EventBus],
         exports: [command_bus_1.CommandBus, query_bus_1.QueryBus, event_bus_1.EventBus]
