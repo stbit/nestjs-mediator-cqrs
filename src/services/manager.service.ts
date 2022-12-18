@@ -58,14 +58,9 @@ class ManagerService {
 
   private providerExecute(Provider: any) {
     const injectedProviders = this.getInjectedProviders(Provider)
+    const instanceProvider = new Provider(...injectedProviders)
 
-    Provider.__COMMAND_EXECUTE__ = async (options = {}) => {
-      const instanceProvider = new Provider(...injectedProviders)
-
-      Object.assign(instanceProvider, options)
-
-      return await instanceProvider.execute()
-    }
+    Provider.__COMMAND_EXECUTE__ = instanceProvider.execute.bind(instanceProvider)
   }
 
   private providerEventHandler(Provider: any) {
